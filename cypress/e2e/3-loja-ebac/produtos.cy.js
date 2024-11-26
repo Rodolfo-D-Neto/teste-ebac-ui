@@ -6,10 +6,13 @@ describe('funcionalidade: produtos', () => {
     });
 
     it('Deve selecionar um produto da lista', () => {
-        cy.get('.product-block')
+        cy.get('.products > .row')
         //.first()
         //.last()
-        .eq(3)
+        //.eq(2)
+        .contains ('Arcadio Gym Short')
         .click ()
+
+        cy.get('.product_title').should('contain' , 'Arcadio Gym Short')
     });
 });
