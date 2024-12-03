@@ -15,3 +15,12 @@ Cypress.Commands.add('preCadastro',(email, senha, nome, sobrenome) => {
         cy.get('.woocommerce-Button').click()
 
 })
+
+Cypress.Commands.add('detalhesConta' , (nome, sobrenome, usuario) =>  {
+        cy.get('#account_first_name').type(nome)
+        cy.get('#account_last_name').type(sobrenome)
+        cy.get('#account_display_name').type(usuario)
+        cy.get('.woocommerce-Button').click()
+        cy.get('.woocommerce-message').should ('contain' , 'Detalhes da conta modificados com sucesso.')
+
+})
