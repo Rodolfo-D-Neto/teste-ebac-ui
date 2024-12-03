@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+
 const perfil = require('../../fixtures/perfil.json')
 
 
@@ -10,14 +11,14 @@ describe('Funcionalidade: Login', () => {
     });
 
 
-    it('Deve fazer login com sucesso',  () => {
+       it('Deve fazer login com sucesso',  () => {
         cy.get('#username') .type ('rodolfo.teste@teste.com.br')
         cy.get('#password') .type ('teste@123')
         cy.get('.woocommerce-form > .button') . click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, rodolfo.teste (não é rodolfo.teste? Sair)')
 });
 
-it('Deve exibir uma mensagem de erro ao inserir usuário inválido', () => {
+        it('Deve exibir uma mensagem de erro ao inserir usuário inválido', () => {
         cy.get('#username') .type ('rodolf.teste@teste.com.br')
         cy.get('#password') .type ('teste@123')
         cy.get('.woocommerce-form > .button') . click()
@@ -26,7 +27,7 @@ it('Deve exibir uma mensagem de erro ao inserir usuário inválido', () => {
     
 });
 
-it('Deve exibir uma mensagem de erro ao inserir senha inválida', () => {
+        it('Deve exibir uma mensagem de erro ao inserir senha inválida', () => {
         cy.get('#username') .type ('rodolfo.teste@teste.com.br')
         cy.get('#password') .type ('teste@1234')
         cy.get('.woocommerce-form > .button') . click()
@@ -34,19 +35,25 @@ it('Deve exibir uma mensagem de erro ao inserir senha inválida', () => {
         cy.get('.woocommerce-error ').should('exist')
 });
 
-it('Deve fazer login com sucesso - Usando massa de dados', () => {
+        it('Deve fazer login com sucesso - Usando massa de dados', () => {
         cy.get('#username') .type (perfil.usuario)
         cy.get('#password') .type (perfil.senha)
         cy.get('.woocommerce-form > .button') . click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, rodolfo.teste (não é rodolfo.teste? Sair)')
 });
 
-it.only('Deve fazer login com sucesso - Usando fixtuare', () => {
+       it('Deve fazer login com sucesso - Usando fixtuare', () => {
        cy.fixture('perfil'). then(dados =>{
-                cy.get('#username') .type (dados.usuario,{log: false})
-                cy.get('#password') .type (dados.senha,{log: false})
-                cy.get('.woocommerce-form > .button') . click()
-                cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, rodolfo.teste (não é rodolfo.teste? Sair)')
-       })
-})
-})
+       cy.get('#username') .type (dados.usuario,{log: false})
+       cy.get('#password') .type (dados.senha,{log: false})
+       cy.get('.woocommerce-form > .button') . click()
+       cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, rodolfo.teste (não é rodolfo.teste? Sair)')
+});
+
+       });
+       it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
+        cy.login('rodolfo.teste@teste.com.br' , 'teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, rodolfo.teste (não é rodolfo.teste? Sair)')
+       });
+
+});
