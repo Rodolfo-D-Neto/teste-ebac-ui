@@ -14,7 +14,7 @@ describe('funcionalidade: login', ()=> {
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, RodolfoQA (não é RodolfoQA? Sair)')
 
-    })
+    });
 
     it('Deve exibir uma mensagem de erro ao inserir o usuário inválido', () => {
         cy.get('#username').type('rodolfoteste@teste.com.br')
@@ -39,7 +39,7 @@ describe('funcionalidade: login', ()=> {
 
     });
 
-    it.only('Deve fazer login com sucesso - Usando fixture', () => {
+    it('Deve fazer login com sucesso - Usando fixture', () => {
         cy.fixture('perfil').then(dados=>{
                 cy.get('#username').type(dados.usuario, {log:false})
                 cy.get('#password').type(dados.senha,{log:false})
@@ -48,4 +48,12 @@ describe('funcionalidade: login', ()=> {
         })
 
     });
+
+    it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
+
+        cy.login('rodolfo.teste@teste.com.br' , 'teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, RodolfoQA (não é RodolfoQA? Sair)')
+        
     })
+
+});
