@@ -9,10 +9,10 @@ describe('funcionalidade: login', ()=> {
         cy.screenshot()
     });
     it('deve fazer login com sucesso' ,()=>{
-        cy.get('#username').type('rodolfo.teste@teste.com.br')
-        cy.get('#password').type('teste@123')
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha)
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, RodolfoQA (não é RodolfoQA? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain' , 'A partir do painel de controle de sua conta, ')
 
     });
 
@@ -44,15 +44,15 @@ describe('funcionalidade: login', ()=> {
                 cy.get('#username').type(dados.usuario, {log:false})
                 cy.get('#password').type(dados.senha,{log:false})
                 cy.get('.woocommerce-form > .button').click()
-                cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, RodolfoQA (não é RodolfoQA? Sair)')
+                cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain' , 'A partir do painel de controle de sua conta')
         })
 
     });
 
     it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
 
-        cy.login('rodolfo.teste@teste.com.br' , 'teste@123')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, RodolfoQA (não é RodolfoQA? Sair)')
+        cy.login('rodolfodutra@teste.com.br' , 'Teste@12345')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('contain' , 'A partir do painel de controle de sua conta')
         
     })
 

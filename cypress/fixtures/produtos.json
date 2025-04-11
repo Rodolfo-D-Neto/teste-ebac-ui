@@ -1,0 +1,26 @@
+[
+    {
+        "nomeProduto": "Zoltan Gym Tee", 
+        "tamanho":"XS",
+        "cor":"Blue",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Chaz Kangeroo Hoodie", 
+        "tamanho":"XS",
+        "cor":"Black",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Zeppelin Yoga Pant", 
+        "tamanho":"32",
+        "cor":"Blue",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Celeste Sports Bra", 
+        "tamanho":"XS",
+        "cor":"Green",
+        "quantidade": 1
+    }
+]
