@@ -22,3 +22,4 @@ cy.get('#account_last_name').type(sobrenome)
 cy.get('#account_display_name').type(usuario)
 cy.get('.woocommerce-Button').click()
 });
+

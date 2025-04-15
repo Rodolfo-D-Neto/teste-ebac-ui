@@ -11,8 +11,8 @@ describe('Funcionalidade: Detalhes da conta com sucesso', () => {
         
     });
 
-    it.only('Deve completar detalhes da conta com sucesso', () => {
-        cy.detalhesContas('Rodolfo', 'Dutra', 'Rodolfo.QA')
+    it('Deve completar detalhes da conta com sucesso', () => {
+        cy.detalhesContas('Rodolfo', 'Dutra', 'QA')
         cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
 
     });
